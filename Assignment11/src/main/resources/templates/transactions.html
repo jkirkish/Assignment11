@@ -1,0 +1,43 @@
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title>Online Bank</title>
+		<link rel="stylesheet" href="/css/transactions.css"/>
+	</head>
+	<body>
+	    
+		<div th:each="storedTransaction : ${transactions}">
+		   <span th:inline="text">
+		       Transaction #[[${storedTransaction.id}]]:<a th:href="@{/transactions/{transactionid}(transactionid=${storedTransaction.id})}">[[${storedTransaction.Retailer}]]| [[${storedTransaction.Description}]]| [[${storedTransaction.Date}]]| [[${storedTransaction.Amount}]]| [[${storedTransaction.Type}]]</a>
+		   </span>
+		</div>	
+		<hr/>
+		<form action="" method="post">
+		  <input type="hidden" th:field="${Transaction.Id}"/>
+		<div>
+		  <label>RETAILER:</label>
+		  <input type="text" th:field="${Transaction.Retailer}"/>
+		</div>
+		<div>
+		  <label>DESCRIPTION:</label>
+		  <input type="text" th:field="${Transaction.Description}"/>
+		</div>
+		<div>
+		  <label>DATE:</label>
+		  <input type="text" th:field="${Transaction.Date}"/>
+		</div>
+		<div>
+		  <label>AMOUNT:</label>
+		  <input type="text" th:field="${Transaction.Amount}"/>
+		</div>
+		<div>
+		  <label>TYPE:</label>
+		  <input type="text" th:field="${Transaction.Type}"/>
+		</div>
+		    <a href="/transactions" th:if="${Transaction.Id!=null}" style="margin-right: 2em;">Back</a>
+			<button>Submit</button>
+		</form>
+		<form th:action="@/transactions/{transactionid}/delete(transactionId=${Transaction.Id})" method="post" th:if="${Transaction.Id != null}">
+			<button >Delete</button>
+		</form>
+	</body>
+</html>

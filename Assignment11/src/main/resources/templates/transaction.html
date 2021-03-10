@@ -1,0 +1,36 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Transaction</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<td><h4>Transaction ID:</h4></td>
+			<td><h4 th:text="${transaction.Id}"></h4></td>
+		</tr>
+		<tr>
+			<td><h4>Retailer:</h4></td>
+			<td><h4 th:text="${transaction.retailer}"></h4></td>
+		</tr>
+		<tr>
+			<td><h4>Description:</h4></td>
+			<td><h4 th:text="${transaction.Description}"></h4></td>
+		</tr>
+		<tr>
+			<td><h4>Date</h4></td>
+			<td><h4 th:text="${transaction.Date}"></h4></td>
+		</tr>
+		<tr>
+			<td><h4>Amount:</h4></td>
+			<td><h4 th:text="${transaction.Amount}"></h4></td>
+		</tr>
+		<tr>
+			<td><h4>Type:</h4></td>
+			<td><h4 th:text="${transaction.Type}"></h4></td>
+		</tr>
+	</table>
+		<form>
+			<a href="/transactions" th:if="${transaction.Id!=null}" style="margin-right: 2em;">Back</a>
+		</form>
+</body>
+</html>
